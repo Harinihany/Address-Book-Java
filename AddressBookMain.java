@@ -84,7 +84,7 @@ public class AddressBookMain {
         int temp = 1;
         while(temp > 0)
         {
-            System.out.println("[1.Edit]");
+            System.out.println("1.Edit 2.Delete 3.Display");
             System.out.print("Enter your choice : ");
             int choice = sc.nextInt();
             switch(choice)
@@ -150,6 +150,19 @@ public class AddressBookMain {
                 
                 default: System.out.println("Invalid Option");
                 break;
+                case 2 :
+                	System.out.print("Enter contact index : ");
+                    int index = sc.nextInt();
+                    personList.remove(index);
+                	System.out.println("contact deleted successfully");
+                					break;
+                	
+                                case 3: //display contact
+                	for ( int i=0; i<personList.size(); i++) {
+                		System.out.println(i);
+                		System.out.println(personList.get(i));
+                	}
+                					break;
                 
             }
         }

@@ -2,6 +2,7 @@ package com.AddressBook.java;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.function.Predicate;
 
 class Person 
 {   
@@ -147,22 +148,54 @@ public class AddressBookMain {
                         }
                         System.out.println("UPDATED");         
                 break;
-                
-                default: System.out.println("Invalid Option");
-                break;
-                case 2 :
+               
+                case 2 : //delete contact
                 	System.out.print("Enter contact index : ");
                     int index = sc.nextInt();
                     personList.remove(index);
                 	System.out.println("contact deleted successfully");
-                					break;
+                break;
                 	
-                                case 3: //display contact
+                 case 3: //display contact
                 	for ( int i=0; i<personList.size(); i++) {
                 		System.out.println(i);
                 		System.out.println(personList.get(i));
                 	}
-                					break;
+                break;
+                 case 4: //Add Multiple person
+                     System.out.print("enter name firstname: ");
+                     String searchFirstName = sc.next();
+                     Predicate<Person> pStream = s -> s.firstName.contains(searchFirstName);
+                     boolean b1 = personList.stream().anyMatch(pStream); 
+         
+                     if(b1 == true)
+                     {
+                         System.out.println("first name found");
+                     }
+                     else
+                     {
+                         System.out.print("Enter last name:");
+                         String lastName1 = sc.next();
+                         System.out.print("Enter address:");
+                         String address1 = sc.next();
+                         System.out.print("Enter city:");
+                         String city1 = sc.next();
+                         System.out.print("Enter state:");
+                         String state1 = sc.next();
+                         System.out.print("Enter zip:");
+                         String zip1 = sc.next();
+                         System.out.print("Enter phoennumber:");
+                         String phoneNumber1 = sc.next();
+                    
+                         Person personObjects1 = new Person(searchFirstName, lastName1, address1, city1, state1, zip1, phoneNumber1);
+                         personList.add(personObjects1);
+
+                         System.out.println("Inserted");
+                     }
+               break;
+                 default: System.out.println("Invalid Option");
+               break;
+                					
                 
             }
         }

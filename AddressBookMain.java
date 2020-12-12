@@ -85,7 +85,7 @@ public class AddressBookMain {
         int temp = 1;
         while(temp > 0)
         {
-            System.out.println("1.Edit 2.Delete 3.Display");
+            System.out.println("1.Edit 2.Delete 3.Display 4.AddPerson 5.Duplicate 6.SortByFName 7.SortBy_city_state_zip 8.Store_city_state_firstname 9.SearchByCity 10.SearchByState ");
             System.out.print("Enter your choice : ");
             int choice = sc.nextInt();
             switch(choice)
@@ -193,8 +193,42 @@ public class AddressBookMain {
                          System.out.println("Inserted");
                      }
                break;
+                 case 5: //checking for duplicates and Adding Multiple persons
+                     System.out.print("enter name firstname: ");
+                     String searchFirstName1 = sc.next();
+                     Predicate<Person> pStream1 = s -> s.firstName.contains(searchFirstName1);
+                     boolean b11 = personList.stream().anyMatch(pStream1); 
+         
+                     if(b11 == true)
+                     {
+                         System.out.println("first name found");
+                     }
+                     else
+                     {
+                         System.out.print("Enter last name:");
+                         String lastName1 = sc.next();
+                         System.out.print("Enter address:");
+                         String address1 = sc.next();
+                         System.out.print("Enter city:");
+                         String city1 = sc.next();
+                         System.out.print("Enter state:");
+                         String state1 = sc.next();
+                         System.out.print("Enter zip:");
+                         String zip1 = sc.next();
+                         System.out.print("Enter phonenumber:");
+                         String phoneNumber1 = sc.next();
+                    
+                         Person personObjects1 = new Person(searchFirstName1, lastName1, address1, city1, state1, zip1, phoneNumber1);
+                         personList.add(personObjects1);
+
+                         System.out.println("Inserted");
+                     }
+             break;
+               
                  default: System.out.println("Invalid Option");
                break;
+               
+               
                 					
                 
             }

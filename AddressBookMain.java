@@ -1,4 +1,8 @@
 package com.AddressBook.java;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
 class Person 
 {   
     String firstName;
@@ -25,5 +29,26 @@ public class AddressBookMain {
 	public static void main(String[] args) 
     {
         System.out.println(" WELCOME TO ADDRESS BOOK PROGRAM");
+        Scanner sc = new Scanner(System.in);
+        ArrayList<Person> personList = new ArrayList<Person>();
+        
+        System.out.print("Enter first name:");
+        String firstName = sc.next();             
+        System.out.print("Enter last name:");
+        String lastName = sc.next();
+        System.out.print("Enter address:");
+        String address = sc.next();
+        System.out.print("Enter city:");
+        String city = sc.next();
+        System.out.print("Enter state:");
+        String state = sc.next();
+        System.out.print("Enter zip:");
+        String zip = sc.next();
+        System.out.print("Enter phonenumber:");
+        String phoneNumber = sc.next();
+                       
+        Person personObject = new Person(firstName, lastName, address, city, state, zip, phoneNumber);
+        personList.add(personObject);
+        System.out.println("New person details had been added");
     }  
 }
